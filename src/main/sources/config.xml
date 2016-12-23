@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+	<useCases>
+		<useCase>
+			<name>创建应收单</name>
+			<group>应收单对外接口</group>
+			<preData>
+				<type>json</type>
+			</preData>
+		</useCase>
+	</useCases>
+</config>
