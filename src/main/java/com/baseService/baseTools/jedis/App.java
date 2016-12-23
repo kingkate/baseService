@@ -1,4 +1,4 @@
-package com.baseService.baseTools;
+package com.baseService.baseTools.jedis;
 
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
@@ -13,10 +13,8 @@ public class App
 {
     public static void main( String[] args )
     {
-    	JedisConfig jedisConfig = new JedisConfig();
-    	JedisPoolSupport support = new JedisPoolSupport(jedisConfig);
-    	JedisTools.getInstance(support);
     	
+    	JedisTools.getInstance();
     	JedisTools.set("test", "data");
     	String dataString = JedisTools.get("test");
     	System.out.println(dataString);

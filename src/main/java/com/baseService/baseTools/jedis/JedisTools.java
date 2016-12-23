@@ -1,4 +1,4 @@
-package com.baseService.baseTools;
+package com.baseService.baseTools.jedis;
 
 import java.util.List;
 import java.util.Map;
@@ -12,7 +12,13 @@ public class JedisTools {
 	
 	private static Jedis jedis = null;
 	
-	public static Jedis getInstance(JedisPoolSupport support){
+	private JedisTools(){};
+	
+	
+	
+	public static Jedis getInstance(){
+		JedisConfig jedisConfig = new JedisConfig();
+    	JedisPoolSupport support = new JedisPoolSupport(jedisConfig);
 		jedis = getJedis(support);
 		return jedis;
 	}

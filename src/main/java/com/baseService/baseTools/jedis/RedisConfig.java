@@ -1,4 +1,4 @@
-package com.baseService.baseTools;
+package com.baseService.baseTools.jedis;
 
 
 public  interface RedisConfig {
