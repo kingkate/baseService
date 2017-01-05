@@ -10,7 +10,7 @@ public class ElevatorThread implements Runnable {
 	
 	@Override
 	public void run() {
-		service.service();
+//		service.service();
 	}
 
 	public ElevatorService getService() {
