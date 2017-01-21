@@ -8,4 +8,6 @@ public class DateUtil {
 		Calendar calendar = Calendar.getInstance();
 		return calendar.getTimeInMillis();
 	}
+	
+	
 }
