@@ -24,22 +24,22 @@ public class Receive {
     public static void main(String[] args) throws Exception {
         String ns = "http://service.joinforwin.com/";
         String wsdlUrl = "http://60.205.106.84:8075/ClinicalNutriSystem.asmx?wsdl";
-        //1¡¢´´½¨·þÎñ(Service)
+        //1ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½(Service)
         URL url = new URL(wsdlUrl);
         QName sname = new QName(ns,"NutritionSystemService");
         Service service = Service.create(url,sname);
                     
-        //2¡¢´´½¨Dispatch
+        //2ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Dispatch
         Dispatch<SOAPMessage> dispatch = service.createDispatch(new QName(ns,"NutritionSystemServiceSoap12"),SOAPMessage.class,Service.Mode.MESSAGE);
                     
-        //3¡¢´´½¨SOAPMessage
+        //3ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½SOAPMessage
         SOAPMessage msg = MessageFactory.newInstance(SOAPConstants.SOAP_1_2_PROTOCOL).createMessage();
         SOAPEnvelope envelope = msg.getSOAPPart().getEnvelope();
         SOAPBody body = envelope.getBody();
-        //4¡¢´´½¨QNameÀ´Ö¸¶¨ÏûÏ¢ÖÐ´«µÝÊý¾Ý
+        //4ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½QNameï¿½ï¿½Ö¸ï¿½ï¿½ï¿½ï¿½Ï¢ï¿½Ð´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         QName ename = new QName(ns,"service ");//<nn:add xmlns="xx"/>
         SOAPBodyElement ele = body.addBodyElement(ename);
-        // ´«µÝ²ÎÊý
+        // ï¿½ï¿½ï¿½Ý²ï¿½ï¿½ï¿½
         SOAPElement element1 = ele.addChildElement("param","");
         element1.setValue("soapParam");
         element1.setAttribute("xmlns", "");
@@ -49,14 +49,14 @@ public class Receive {
        
         msg.writeTo(System.out);
         System.out.println("\n invoking.....");
-        //5¡¢Í¨¹ýDispatch´«µÝÏûÏ¢,»á·µ»ØÏìÓ¦ÏûÏ¢
+        //5ï¿½ï¿½Í¨ï¿½ï¿½Dispatchï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢,ï¿½á·µï¿½ï¿½ï¿½ï¿½Ó¦ï¿½ï¿½Ï¢
         SOAPMessage response = dispatch.invoke(msg);
         response.writeTo(System.out);
         System.out.println();
                     
-        //6¡¢ÏìÓ¦ÏûÏ¢´¦Àí,½«ÏìÓ¦µÄÏûÏ¢×ª»»Îªdom¶ÔÏó
+        //6ï¿½ï¿½ï¿½ï¿½Ó¦ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½ï¿½,ï¿½ï¿½ï¿½ï¿½Ó¦ï¿½ï¿½ï¿½ï¿½Ï¢×ªï¿½ï¿½Îªdomï¿½ï¿½ï¿½ï¿½
         Document doc = response.getSOAPPart().getEnvelope().getBody().extractContentAsDocument();
-        String str = doc.getElementsByTagName("serviceResponse").item(0).getTextContent();
+        String str = doc.getElementsByTagName("serviceResponse").item(0).getNodeValue();
         System.out.println(str);
 
     }

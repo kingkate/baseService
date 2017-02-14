@@ -16,7 +16,7 @@ public class JedisPoolSupport {
 		if(null ==jedisConfig){			
 			jedisConfig = new JedisConfig();
 		}
-		jedisPool = new JedisPool(jedisConfig.getJedisPoolConfig(),"127.0.0.1",6379);
+		jedisPool = new JedisPool(jedisConfig.getJedisPoolConfig(),"192.168.21.128",7000);
 		return jedisPool;
 	}
 	
